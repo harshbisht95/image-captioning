@@ -8,6 +8,7 @@ from keras.models import Model
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
 
+
 def extract_features(directory):
     # Get the InceptionV3 model trained on imagenet data
     model = InceptionV3(weights='imagenet')
@@ -39,9 +40,11 @@ def extract_features(directory):
         features[image_id] = feature
         print(len(features))
     return features
+
+
 # extract features from all images
-directory = 'C:/Users/Harsh/Desktop/ML/DataSet/image-captioning/Flickr8k_Dataset/Flicker8k_Dataset'
+directory = ('Train_Image_Path' + 'Flicker8k_Dataset')
 features = extract_features(directory)
 print('Extracted Features: %d' % len(features))
 # save to file
-dump(features, open('features.pkl', 'wb'))
+dump(features, open('/processed_data/features.pkl', 'wb'))
